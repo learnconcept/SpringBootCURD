@@ -1,7 +1,8 @@
 package com.learn.example.modle;
 
 public class EmployeeModel {
-
+	
+	private Integer id;
 	private String name;
 	private String add;
 	private String email;
@@ -24,7 +25,11 @@ public class EmployeeModel {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	
 }
