@@ -53,15 +53,16 @@ public class EmployeeController {
 	}
 	
 	@GetMapping("/getById/{id}")
-	public EmployeeModel getDetailsById(@PathVariable("id") Integer id){
-			Optional<Employee> emp=Optional.of(employeeRepository.findById(id)
-			.orElseThrow(()->new RecordNotFound("EmployeeDetails not found "+1)));
-			EmployeeModel empModel = new EmployeeModel();
-			empModel.setAdd(emp.get().getEmpAdd());
-			empModel.setEmail(emp.get().getEmpEmail());
-			empModel.setId(emp.get().getEmpId());
-			empModel.setName(emp.get().getEmpName());
-			return empModel;
+	public Employee getDetailsById(@PathVariable("id") Integer id){
+			return this.employeeRepository.findById(id)
+			.orElseThrow(()->new RecordNotFound("EmployeeDetails not found "+id));
+			/*
+			 * EmployeeModel empModel = new EmployeeModel();
+			 * empModel.setAdd(emp.get().getEmpAdd());
+			 * empModel.setEmail(emp.get().getEmpEmail());
+			 * empModel.setId(emp.get().getEmpId());
+			 * empModel.setName(emp.get().getEmpName()); return empModel;
+			 */
 	}
 	
 	@PostMapping("updateRecord")
@@ -72,7 +73,6 @@ public class EmployeeController {
 		emp.setEmpEmail(employeeModel.getEmail());
 		emp.setEmpName(employeeModel.getName());
 		return employeeRepository.save(emp);
-		
-		
+				
 	}
 }
