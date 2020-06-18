@@ -13,14 +13,14 @@ public class ExceptionHandlerCustom {
 	
 	@ExceptionHandler
 	public ResponseEntity<?> handleRecordNotFound(RecordNotFound ex, WebRequest request){
-		ExceptionDetails details = new ExceptionDetails(new Date(), ex.getMessage(), request.getDescription(true));
+		ExceptionDetails details = new ExceptionDetails(new Date(), ex.getMessage(), request.getDescription(false));
 		
 		return new ResponseEntity(details, HttpStatus.NOT_FOUND);
 	}
 	
 	@ExceptionHandler
 	public ResponseEntity<?> handleGlobalException(Exception ex, WebRequest request){
-		ExceptionDetails details = new ExceptionDetails(new Date(), ex.getMessage(), request.getDescription(true));
+		ExceptionDetails details = new ExceptionDetails(new Date(), ex.getMessage(), request.getDescription(false));
 		return new ResponseEntity(details, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
