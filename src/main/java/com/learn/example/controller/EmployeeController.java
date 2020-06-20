@@ -1,8 +1,9 @@
 package com.learn.example.controller;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,7 @@ public class EmployeeController {
 	
 	
 	@PostMapping("/insert")
-	public void saveEmp(@RequestBody EmployeeModel empMod) {
+	public void saveEmp(@Valid @RequestBody EmployeeModel empMod) {
 		Employee employee = new Employee();
 		employee.setEmpAdd(empMod.getAdd());
 		employee.setEmpEmail(empMod.getEmail());
@@ -73,6 +74,5 @@ public class EmployeeController {
 		emp.setEmpEmail(employeeModel.getEmail());
 		emp.setEmpName(employeeModel.getName());
 		return employeeRepository.save(emp);
-				
 	}
 }
