@@ -1,6 +1,9 @@
 package com.learn.example.controller;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import javax.validation.Valid;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.learn.example.entity.Employee;
+import com.learn.example.entity.EmployeeAccount;
 import com.learn.example.exception.RecordNotFound;
 import com.learn.example.modle.EmployeeModel;
 import com.learn.example.repository.EmployeeRepository;
@@ -35,7 +39,7 @@ public class EmployeeController {
 		employee.setEmpAdd(empMod.getAdd());
 		employee.setEmpEmail(empMod.getEmail());
 		employee.setEmpName(empMod.getName());
-		
+		employee.setEmpAccount(empMod.getEmpAccount());
 		employeeRepository.save(employee);
 	}
 	
@@ -48,6 +52,7 @@ public class EmployeeController {
             obj.setEmail(temp.getEmpEmail());
             obj.setId(temp.getEmpId());
             obj.setAdd(temp.getEmpAdd());
+            obj.setEmpAccount(temp.getEmpAccount());
             return obj;
         }).collect(Collectors.toList());
 		return result;

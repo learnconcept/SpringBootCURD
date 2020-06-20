@@ -1,7 +1,12 @@
 package com.learn.example.modle;
 
+import java.util.List;
+
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.learn.example.entity.EmployeeAccount;
 
 public class EmployeeModel {
 	
@@ -13,8 +18,10 @@ public class EmployeeModel {
 	@Size(min=2, message = "Address should be minimum 4 characters")
 	private String add;
 	@NotNull
-	@Size(min=6, message = "Email should be minimum 4 characters")
+	@Email
 	private String email;
+	private List<EmployeeAccount> empAccount;
+	
 	
 	public String getName() {
 		return name;
@@ -39,6 +46,12 @@ public class EmployeeModel {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public List<EmployeeAccount> getEmpAccount() {
+		return empAccount;
+	}
+	public void setEmpAccount(List<EmployeeAccount> empAccount) {
+		this.empAccount = empAccount;
 	}
 	
 }
